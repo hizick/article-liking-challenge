@@ -32,6 +32,6 @@ Artice, User, Likes. One to many relationship was created between Artcile and Li
 
 4. When users unlike, their likes are deleted from the database so as to leave less data on the table for faster query.
 
-## All above work for:
-### A million concurrent users clicking the button at the same time
-### A million concurrent users requesting the article's like count at the same time
+## All above can also work for:
+##### A million concurrent users clicking the button at the same time
+##### A million concurrent users requesting the article's like count at the same time
