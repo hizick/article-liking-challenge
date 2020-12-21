@@ -27,7 +27,7 @@ namespace LikeButton.Controllers
 
             string user = HttpContext.Session.GetString("user") ?? string.Empty;
 
-            //automapper should do this mapping but we have only four props, so I think it is not that bad mapping manually
+            //automapper should do this mapping but we have only five props, so I think it is not that bad mapping manually
             model.ArticleId = articleId;
             model.ArticleText = article.ArticleText;
             model.LikeCount = article.Likes.Count();
