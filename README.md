@@ -6,6 +6,7 @@ In this code,
 ### How the client-side, server-side + database are structured
 
 The client side is structured in a way that when user lands on the page, they see the like count and when they click the like button, it prompts them to login (if they are not).
+
 When they do, they can now like/unlike as they wish. Optimistic updates was used on the frontend, so that liking process can appear faster.
 
 Server side also restricts unidentfied users to use the button.
