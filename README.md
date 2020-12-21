@@ -3,6 +3,16 @@ code challenge for rock content
 
 In this code, 
 
+### How the client-side, server-side + database are structured
+
+The client side is structured in a way that when user lands on the page, they see the like count and when they click the like button, it prompts them to login (if they are not).
+When they do, they can now like/unlike as they wish. Optimistic updates was used on the frontend, so that liking process can appear faster.
+
+Server side also restricts unidentfied users to use the button.
+
+For database, three tables were created using code first approach. 
+Artice, User, Likes. One to many relationship was created between Artcile and Likes, and User and Likes.
+
 ### Restricting abuse of the button.
 
 1. Users can only like article once, increasing the like count and toggling the button to unlike. This goes vice versa for when they unlike
