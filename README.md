@@ -13,6 +13,8 @@ Server side also restricts unidentfied users to use the button.
 
 For database, three tables were created using code first approach. 
 Artice, User, Likes. One to many relationship was created between Artcile and Likes, and User and Likes.
+The userId and ArticleId which are foreign keys because of the table relationship are also primary keys on the Like table.
+This is done with EFCore fluentAPI to prevent duplicate data (i.e. one user liking twice) on the table. 
 
 ### Restricting abuse of the button.
 
