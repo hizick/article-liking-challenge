@@ -21,10 +21,10 @@ namespace LikeButton.Persistence
         public async Task<bool> LikeUnlikeArticleAsync(Like like)
         {
             if (like.Liked)
-                //if already liked, we remove from db, reducing db data. 
-                //Toggling/updating liked column on db would leave unused data
                 context.Like.Add(like);
             else
+                //if already liked, we remove from db, reducing db data. 
+                //Toggling/updating liked column on db would leave unused data
                 context.Like.Remove(like);
             return await context.SaveChangesAsync() > 0;
         }
