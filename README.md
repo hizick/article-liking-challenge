@@ -8,6 +8,7 @@ In this code,
 The client side is structured in a way that when user lands on the page, they see the like count and when they click the like button, it prompts them to login (if they are not).
 
 When they do, they can now like/unlike as they wish. Optimistic updates was used on the frontend, so that liking process can appear faster.
+This was done with ajax so the page wouldn't reload/refresh when user likes and/or when the page calls the server.
 
 Server side also restricts unidentfied users to use the button.
 
