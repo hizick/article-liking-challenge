@@ -14,8 +14,71 @@ Server side also restricts unidentfied users to use the button.
 
 For database, three tables were created using code first approach. 
 Artice, User, Likes. One to many relationship was created between Artcile and Likes, and User and Likes.
+
+```C#
+[Table("Article")] //all entity configurations are done with ef core fluent api in the persitence folder
+    public class Article
+    {
+        public int ArticleId { get; set; } 
+        public string Title { get; set; }
+        public string ArticleText { get; set; }
+        public List<Like> Likes { get; set; }
+        public Article()
+        {
+            Likes = new List<Like>();
+        }
+    }
+    
+  [Table("User")] //all entity configurations are done with fluent api in the persitence folder
+  public class User
+  {
+      public string UserId { get; set; }
+      public List<Like> Likes { get; set; }
+
+      //public string Password { get; set; } //this is not important for this system right now
+  }
+  
+  [Table("Like")] //all entity configurations are done with fluent api in the persitence folder
+    public class Like
+    {
+        public int ArticleId { get; set; }
+        public string UserId { get; set; }
+        public bool Liked { get; set; }
+        
+    }
+```
+```C# //fLUENT API
+public class LikeDbContext : DbContext
+    {
+        public LikeDbContext(DbContextOptions<LikeDbContext> options)
+            : base(options){}
+        public DbSet<Like> Like { get; set; }
+        public DbSet<User> User { get; set; }
+        public DbSet<Article> Article { get; set; }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<Like>(entity =>
+            {
+                entity.HasKey(e => new { e.ArticleId, e.UserId });
+                //this prevents insertion of duplicate records
+            });
+
+            modelBuilder.Entity<Article>(entity =>
+            {
+                entity.HasKey(e => new { e.ArticleId });
+            });
+
+            modelBuilder.Entity<User>(entity =>
+            {
+                entity.HasKey(e => new {e.UserId });
+            });
+        }
+    }
+ ```
+
 The userId and ArticleId which are foreign keys because of the table relationship are also primary keys on the Like table.
-This is done with EFCore fluentAPI to prevent duplicate data (i.e. one user liking twice) on the table. 
+This is done with EFCore fluentAPI to prevent duplicate data (i.e. one user liking twice) on the table.
 
 ### Restricting abuse of the button.
 
