@@ -63,7 +63,6 @@ namespace LikeButton.Controllers
             if (like == null)
             {
                 like = new Like();
-
                 //automapper should do this mapping but this is still couple ones
 
                 like.ArticleId = articleId;
